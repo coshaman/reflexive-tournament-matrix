@@ -1,0 +1,11 @@
+main.aux
+main.bbl
+main.blg
+main.log
+main.out
+*.synctex.gz
+__pycache__/
+pdf-render/
+extracted/
+*.zip
+.verify.*

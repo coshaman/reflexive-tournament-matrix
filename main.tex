@@ -1,0 +1,270 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\gr}{\gamma_{\rm gr}}
+\newcommand{\grt}{\gamma_{\rm gr}^{t}}
+\newcommand{\timesdir}{\mathbin{\times}}
+
+\title{Random counterexamples to three Grundy product conjectures}
+\author{}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We disprove the hypergraph expanding-sequence product conjecture and, by the
+standard incidence-graph translations, the Grundy total-domination
+direct-product and Grundy domination strong-product conjectures.  A
+reflexive random tournament matrix of order $1937$ has, with positive
+probability, no triangular witness of length $45$.  Its product with its
+transpose nevertheless contains a $1937\times1937$ identity submatrix.
+Translating this single probabilistic object gives a connected co-bipartite
+graph counterexample and an incidence bipartite graph counterexample.  No
+explicit order-$1937$ matrix is claimed, and we make no priority claim.
+\end{abstract}
+
+\section{Introduction}
+
+The Grundy domination number is the maximum length of a legal sequence of
+distinct vertices, where each term has a vertex in its closed neighborhood
+not dominated by earlier terms.  The strong-product conjecture of
+Bre{\v{s}}ar et al.~\cite{bresar2016} predicts
+\(\gr(G\boxtimes H)=\gr(G)\gr(H)\); the analogous total-domination
+conjecture predicts \(\grt(G\timesdir H)=\grt(G)\grt(H)\).
+The hypergraph formulation and equivalence of these three conjectures were
+given in~\cite{bresar2018} (published as~\cite{bresar2018doi}).  We provide a
+counterexample to all three statements.  The construction repurposes the
+classical random fooling-set/tournament and $A\otimes A^T$ mechanisms
+\cite{pourmoradnasseri2016,friesen2014} for the expanding-sequence parameter.
+Neither the random model nor the identity-block mechanism is new, and we make
+no priority claim.
+
+\section{Expanding sequences and matrices}
+
+For a $0$--$1$ matrix $A$, write $A\otimes B$ for the Kronecker product.
+
+\begin{definition}
+For ordered injective row indices $r_1,\ldots,r_k$ and column indices
+$c_1,\ldots,c_k$, call the pair a triangular witness if
+\[
+A[r_i,c_i]=1,\qquad A[r_i,c_j]=0\quad(i<j).
+\]
+Let $\tau(A)$ be the largest possible $k$.
+\end{definition}
+
+Viewing the rows as hyperedges on the column set, the condition says that
+each new hyperedge contains a point not in the earlier hyperedges, with the
+chosen private points ordered by the sequence.  Thus $\tau(A)$ is exactly the
+maximum expanding-row (or expanding-hyperedge) sequence length.  In
+graph-product terminology, the same matrix pattern is also called a
+semi-induced matching; this should not be silently identified with every
+definition of the standard semi-ladder index
+\cite{chalermsook2013,fabianski2019}.
+
+\begin{lemma}\label{lem:transpose}
+$\tau(A^T)=\tau(A)$.
+\end{lemma}
+\begin{proof}
+Transpose a triangular witness and reverse both orders.  The diagonal-one
+conditions remain diagonal-one.  A zero $A[r_i,c_j]$ with $i<j$ becomes the
+zero $A^T[c_j,r_i]$, which is above the diagonal after reversing the two
+orders.  The operation is an involution.
+\end{proof}
+
+\section{The random theorem}
+
+Let $M$ be the reflexive random tournament matrix of order $n$: its diagonal
+is one, and for every unordered pair $\{u,v\}$ exactly one of $M[u,v]$ and
+$M[v,u]$ is one, independently across pairs.
+
+\begin{lemma}\label{lem:union}
+For fixed injective ordered row and column $k$-tuples,
+\[
+\Pr[\text{they form a triangular witness}]\le 2^{-\binom{k}{2}}.
+\]
+\end{lemma}
+\begin{proof}
+There are $\binom{k}{2}$ upper-zero constraints.  If one is a diagonal cell,
+the event is impossible because diagonal entries are one.  Two distinct
+constraints cannot use the same directed cell, since both tuples are
+injective.  If two constraints use the same unordered tournament edge in
+opposite directions, they require both orientations to be zero, again making
+the event impossible.  Therefore, whenever the event is nonempty, all
+$\binom{k}{2}$ zero constraints use distinct independent tournament bits.
+The diagonal-one constraints can only reduce the event.  Hence its probability
+is at most $2^{-\binom{k}{2}}$.
+\end{proof}
+
+\begin{theorem}\label{thm:random}
+For $n=1937$ there exists a reflexive tournament matrix $M$ with
+$\tau(M)\le44$ and
+\[\tau(M\otimes M^T)\ge1937.
+\]
+\end{theorem}
+\begin{proof}
+Union bound over the $(n)_k^2$ ordered injective row and column tuples gives
+\[
+ \Pr[\tau(M)\ge k]\le (n)_k^2 2^{-\binom{k}{2}}
+ < n^{2k}2^{-\binom{k}{2}}.
+\]
+For $n=1937$, $k=45$, $n<2^{11}$ and $\binom{45}{2}=990$, so the last
+quantity is less than
+\[
+(2^{11})^{90}2^{-990}=2^0=1.
+\]
+Thus some $M$ has $t:=\tau(M)\le44$.  For rows $(i,i)$ and columns $(j,j)$,
+\[
+(M\otimes M^T)[(i,i),(j,j)]=M[i,j]M[j,i]=\delta_{ij}.
+\]
+These rows and columns form an identity submatrix, whose diagonal witness has
+length $n=1937$.  This proves the second assertion.
+\end{proof}
+
+Theorem~\ref{thm:random} is already a counterexample to multiplicativity of
+the hypergraph expanding-sequence parameter, since
+\[
+\tau(M\otimes M^T)\ge1937>44^2\ge\tau(M)\tau(M^T).
+\]
+
+\section{Strong-product graph corollary}
+
+For a graph $G$, a closed-neighborhood sequence is legal if each selected
+vertex has a private vertex in its closed neighborhood outside the union of
+the earlier closed neighborhoods.  The Grundy domination number $\gr(G)$ is
+the maximum length of such a sequence.  We use
+$N_{G\boxtimes H}[(g,h)]=N_G[g]\times N_H[h]$.
+
+Define $K(M)$ as the co-bipartite graph with cliques
+$R=\{r_i:i\in[n]\}$ and $C=\{c_j:j\in[n]\}$, with cross-edge $r_ic_j$ iff
+$M[i,j]=1$.
+
+\begin{lemma}\label{lem:K}
+\(\gr(K(M))=\tau(M)\).
+\end{lemma}
+\begin{proof}
+An $R$-only legal sequence is exactly an expanding-row sequence of $M$;
+similarly a $C$-only sequence is one of $M^T$.  By Lemma~\ref{lem:transpose}
+both have maximum length $\tau(M)$.  If a legal sequence switches cliques,
+then after the first selected vertex from each clique both cliques are
+dominated, so the switch is its last term.  Suppose the prefix lies in $R$
+and has length $s$, and let $c_j$ be the switching term.  Its private witness
+is either in $C$ or in $R$.  If it is a column $c_x$, then $c_x$ was not
+covered by the prefix.  Hence $r_x$ was not selected (otherwise reflexivity
+would cover $c_x$), and $r_x$ can be appended using $c_x$ as private witness.
+If it is a row $r_x$, then $r_x$ was not selected and its reflexive closed
+neighborhood supplies the same witness when $r_x$ is appended.  Thus every
+mixed sequence can be replaced by an $R$-only legal sequence of at least the
+same length.  The transpose argument handles a prefix in $C$.  Conversely,
+an inclusion-maximal expanding sequence is dominating: an undominated column
+$c_j$ cannot have its index among the selected rows, so the unselected row
+$r_j$ is appendable; the row case is identical.  Hence the maximum is
+$\tau(M)$.
+\end{proof}
+
+The graph $K(M)$ is connected, co-bipartite, and has $3874$ vertices.  In
+$K(M)\boxtimes K(M)$ put $z_i=(r_i,c_i)$ and $w_j=(c_j,r_j)$.  Since
+$N[(u,v)]=N[u]\times N[v]$,
+\[
+w_j\in N[z_i]\quad\Longleftrightarrow\quad M[i,j]M[j,i]=\delta_{ij}.
+\]
+Thus $z_1,\ldots,z_n$ is legal, with private witnesses $w_1,\ldots,w_n$.
+Any finite legal prefix extends to a dominating sequence by appending legal
+vertices, so
+\[
+\gr(K(M)\boxtimes K(M))\ge1937>44^2\ge\gr(K(M))^2.
+\]
+
+\section{Total-Grundy direct-product corollary}
+
+For a graph $G$ without isolated vertices, an open-neighborhood sequence is
+legal if each term has a vertex in its open neighborhood outside the earlier
+open neighborhoods; the maximum length is the Grundy total-domination number
+$\grt(G)$.  The direct product has vertex set $V(G)\times V(H)$ and adjacency
+$(g,h)\sim(g',h')$ exactly when $gg'\in E(G)$ and $hh'\in E(H)$.  The
+hypergraph parameter above is the corresponding expanding-edge parameter.
+
+For a matrix $A$, let $B(A)$ be its incidence bipartite graph: left vertices
+are rows, right vertices are columns, and $i\sim j$ iff $A[i,j]=1$.
+
+\begin{lemma}\label{lem:incidence}
+\[
+\grt(B(A))=\tau(A)+\tau(A^T)=2\tau(A).
+\]
+\end{lemma}
+\begin{proof}
+The open neighborhoods of left-side terms lie in the right side, while those
+of right-side terms lie in the left side, so the two subsequences do not
+interfere.  Each side is exactly a triangular witness, giving the first
+equality; Lemma~\ref{lem:transpose} gives the second.
+\end{proof}
+
+The four vertex types in $B(M)\timesdir B(M)$ split into two disjoint
+subgraphs by whether the two coordinates lie on the same side.  Directly from
+the incidence condition, with the displayed coordinate orderings,
+\[
+B(M)\timesdir B(M)\cong B(M\otimes M)\;\sqcup\;B(M\otimes M^T).
+\]
+The first isomorphism uses $(R,R)$ as rows and $(C,C)$ as columns; the second
+uses $(R,C)$ as rows and $(C,R)$ as columns.  Grundy total-domination is
+additive over disjoint unions, because open neighborhoods do not cross the
+union.
+The second factor is $M\otimes M^T$, not another copy of $M\otimes M$.
+The standard lexicographic witness gives
+$\tau(M\otimes M)\ge t^2$: take the witness pairs for $M$ in outer order and
+use the witness pairs in inner order within each outer pair.  The identity
+submatrix in Theorem~\ref{thm:random} gives
+$\tau(M\otimes M^T)\ge n$.  Therefore, using disjoint components additively,
+\[
+\grt(B(M)\timesdir B(M))
+\ge2t^2+2n>4t^2=\grt(B(M))^2.
+\]
+
+\section{Asymptotic strengthening}
+
+Fix $\varepsilon>0$ and set
+$k=\lceil(4+\varepsilon)\log_2 n\rceil$.  The base-two logarithm of the
+union bound is
+\[
+2k\log_2n-\frac{k(k-1)}2
+=-(2\varepsilon+\varepsilon^2/2)(\log_2n)^2+O(\log n),
+\]
+which tends to $-\infty$.  Hence for all sufficiently large $n$ some
+tournament matrix satisfies $\tau(M)=O(\log n)$, while
+$\tau(M\otimes M^T)\ge n$.  The multiplicative violation is therefore
+$\Omega(n/\log^2n)$.  The two graph translations above inherit the same
+unbounded gap (up to the fixed square/product conversion).
+
+\section{Related work and scope}
+
+The strong-product conjecture originated in~\cite{bresar2016}.  The
+total-Grundy direct-product conjecture, hypergraph formulation, and stated
+equivalence appear in~\cite{bresar2018,bresar2018doi}.  The forest-factor
+positive theorem is~\cite{bell2021}.  A proof attempt was later withdrawn;
+the arXiv record explicitly marks version 2 as withdrawn and notes an error
+in its proof~\cite{herrman2023}.
+
+The random fooling-set/tournament perspective and the classical tensor
+identity mechanism belong to the fooling-set/rank literature
+\cite{pourmoradnasseri2016,friesen2014}; the expanding-sequence/semi-induced-
+matching correspondence also appears in graph-product work
+\cite{chalermsook2013}.  Standard semi-ladder terminology is surveyed in
+\cite{fabianski2019} and recent complexity work~\cite{manurangsi2026}.
+Our computational package exhaustively checks only small tournaments for
+mutation and indexing errors; it is not evidence for the existential
+$n=1937$ theorem.  The literature search recorded in
+the file `research/LiteratureAudit.md` does not establish priority for this
+counterexample.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
