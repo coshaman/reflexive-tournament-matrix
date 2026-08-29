@@ -122,6 +122,9 @@ quantity is less than
 \[
 (2^{11})^{90}2^{-990}=2^0=1.
 \]
+For reference, direct evaluation gives
+$\log_2(1937^{90}2^{-990})=-7.235258525707$, hence the bound is
+$0.006636974627<1$.
 Thus some $M$ has $t:=\tau(M)\le44$.  For rows $(i,i)$ and columns $(j,j)$,
 \[
 (M\otimes M^T)[(i,i),(j,j)]=M[i,j]M[j,i]=\delta_{ij}.
@@ -135,6 +138,13 @@ the hypergraph expanding-sequence parameter, since
 \[
 \tau(M\otimes M^T)\ge1937>44^2\ge\tau(M)\tau(M^T).
 \]
+
+The number $1937$ is also the smallest order obtained from this coarse
+first-moment inequality together with the strict violation condition
+$n>(k-1)^2$: the inequality is equivalent to
+$n<2^{(k-1)/4}$, and checking integer $k$ shows that $k=45$ first permits
+$n=(k-1)^2+1=1937$.  This is only a property of this particular bound, not a
+claim of global minimality.
 
 \section{Strong-product graph corollary}
 

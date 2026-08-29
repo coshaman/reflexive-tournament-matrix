@@ -7,6 +7,10 @@ Date: 2026-08-29
 - Matrix: reflexive tournament matrix `M` of order `n = 1937`.
 - Parameter: `tau(M) <= 44`, while `tau(M tensor M^T) >= 1937`.
 - Multiplicative violation: at least `1937 / 44^2 > 1`.
+- Exact first-moment check: `log2(1937^90 2^-990) = -7.235258525707`, so the
+  union bound is `0.006636974627 < 1`. Under the strict condition
+  `n > (k-1)^2`, `k = 45, n = 1937` is the first integer pair allowed by this
+  coarse inequality; this is not a global minimality claim.
 - Asymptotic statement: for every fixed epsilon > 0 and all sufficiently
   large `n`, an existential tournament has `tau(M) = O(log n)` and the
   tensor violation is `Omega(n/log^2 n)`.
