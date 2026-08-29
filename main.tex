@@ -158,13 +158,12 @@ both have maximum length $\tau(M)$.  If a legal sequence switches cliques,
 then after the first selected vertex from each clique both cliques are
 dominated, so the switch is its last term.  Suppose the prefix lies in $R$
 and has length $s$, and let $c_j$ be the switching term.  Its private witness
-is either in $C$ or in $R$.  If it is a column $c_x$, then $c_x$ was not
-covered by the prefix.  Hence $r_x$ was not selected (otherwise reflexivity
-would cover $c_x$), and $r_x$ can be appended using $c_x$ as private witness.
-If it is a row $r_x$, then $r_x$ was not selected and its reflexive closed
-neighborhood supplies the same witness when $r_x$ is appended.  Thus every
-mixed sequence can be replaced by an $R$-only legal sequence of at least the
-same length.  The transpose argument handles a prefix in $C$.  Conversely,
+is a column $c_x$: a row-side witness is impossible because the first selected
+vertex in the $R$-clique already dominates all of $R$.  Since $c_x$ was not
+covered by the prefix, $r_x$ was not selected (otherwise reflexivity would
+cover $c_x$), and $r_x$ can be appended using $c_x$ as private witness.  Thus
+every mixed sequence can be replaced by an $R$-only legal sequence of at least
+the same length.  The transpose argument handles a prefix in $C$.  Conversely,
 an inclusion-maximal expanding sequence is dominating: an undominated column
 $c_j$ cannot have its index among the selected rows, so the unselected row
 $r_j$ is appendable; the row case is identical.  Hence the maximum is

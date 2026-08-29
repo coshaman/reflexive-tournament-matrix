@@ -30,3 +30,23 @@ The manuscript now removes the first-counterexample claim, qualifies the
 semi-ladder terminology, states the product-side neighborhood conventions,
 expands the mixed-clique argument, and makes the direct-product isomorphisms
 and additivity explicit.
+
+## Round 2: fresh final-version review
+
+Six new reviewers independently scored the revised version:
+
+- Proof correctness: **4/5**. No intrinsic correctness blocker; only minor
+  ambiguity remains in the maximal-sequence paragraph.
+- Grundy/product definitions: **4/5**. Definitions and translations are sound;
+  specialist-level significance is intrinsic.
+- Probability/tensor: **4/5**. Union bound and tensor witness are correct;
+  classical machinery limits top-tier placement.
+- Literature/priority: **3/5**. No priority blocker remains; the contribution
+  is a valid specialist result using classical ingredients.
+- Top-tier significance: **2/5**. The intrinsic blocker is lack of a new
+  technique, explicit construction, structural theorem, or broader consequence.
+- Exposition/reproducibility: **3/5**. The package is reproducible and the
+  remaining mixed-clique issue was local and corrected in the final source.
+
+Fresh meta-review: **4/5**. It judged `SPECIALIST_LEVEL` defensible and found
+the main citations, theorem claims, asymptotics, and two verifiers sound.

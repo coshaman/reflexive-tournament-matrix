@@ -24,10 +24,12 @@ order 1937.
 ## Review and positioning
 
 Round-1 scores recorded from six independent reviewers were 4, 3, 4, 2, 2,
-and 3 (mean 3.0/5). The common mathematical weakness was exposition in the
-`K(M)` translation, now expanded. The common publication weakness was novelty:
-the first-moment and tensor ingredients are classical and priority is not
-established. Final status is therefore `SPECIALIST_LEVEL`.
+and 3 (mean 3.0/5). A fresh round after revision scored 4, 4, 4, 3, 2, and
+3 (mean 3.33/5); a fresh meta-review scored 4/5. The common mathematical
+weakness was exposition in the `K(M)` translation; the final source explicitly
+rules out the impossible row-side witness. The common publication weakness is
+intrinsic novelty: the first-moment and tensor ingredients are classical and
+priority is not established. Final status is therefore `SPECIALIST_LEVEL`.
 
 ## Artifact
 
